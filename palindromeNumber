@@ -1,0 +1,24 @@
+class Solution {
+    public boolean isPalindrome(int x) {
+        
+        int temp =1;
+        int temp_reel =0;
+        int temp_nombre = x;
+        while(temp_nombre>0)
+        {
+            temp = temp_nombre % 10;
+            temp_nombre = temp_nombre/10;  
+             temp_reel = 10 *temp_reel + temp;  
+            
+        }
+        if(temp_reel == x)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+          
+    }
+}
