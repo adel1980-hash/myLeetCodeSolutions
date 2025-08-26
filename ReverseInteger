@@ -1,0 +1,28 @@
+class Solution {
+    public int reverse(int x) {
+        
+        int capt_chiffre = 0;
+        int res =0;
+        int x_negatif = x;
+        if(x>0)
+        {
+        while(x_negatif>0)
+        {
+            capt_chiffre = x_negatif % 10;
+            x_negatif = x_negatif/10;
+            res = 10 * res + capt_chiffre;
+        }
+            return res;
+        }
+        else
+        {
+             while(x_negatif<0)
+        {
+            capt_chiffre = x_negatif % 10;
+            x_negatif = x_negatif/10;
+            res = 10 * res -capt_chiffre;
+        }
+        return -res;
+        }
+    }        
+    }
