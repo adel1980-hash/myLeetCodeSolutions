@@ -1,0 +1,31 @@
+
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        
+       
+       Set<List<Integer>> uniqueTriplets = new HashSet<>();
+        int temp1=0;
+        int temp2=0;
+        int temp3=0;
+
+        for(int i =0;i<nums.length;i++)
+        {       
+                temp1 = nums[i];     
+            for(int j=0;j<nums.length;j++)
+            {
+                temp2 = nums[j];
+                for(int k =0;k<nums.length;k++)
+                {   
+                    temp3 = nums[k];
+                        if((temp1 + temp2 +temp3 == 0) && (i!=j && i!=k && k!=j))
+                        {
+                            List<Integer> triplet = Arrays.asList(temp1, temp2, temp3);
+                            Collections.sort(triplet); //Permets d'eviter les doublons
+                            uniqueTriplets.add(triplet);                                                                       
+                        }
+                }
+            }
+        }
+            return new ArrayList<>(uniqueTriplets);
+    }
+}
