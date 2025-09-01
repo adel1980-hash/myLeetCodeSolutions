@@ -1,0 +1,33 @@
+class Solution {
+    public int threeSumClosest(int[] nums, int target) {
+        int temp = 1000000;
+        int sum_temp = 0;
+        int sum_rep = 0;
+        int sum_pos = 0;
+        int sum_pos_abs = 0;
+        for(int i =0;i<nums.length; i++)
+        {
+            for(int y = i+1; y<nums.length; y++)
+            {
+
+                for(int k = y +1; k<nums.length; k++)
+                { sum_temp = nums[i] + nums[y] + nums[k];
+               
+                    sum_pos = target- sum_temp;
+                    sum_pos_abs = Math.abs(sum_pos);
+                    if(sum_pos_abs<temp)
+                    {
+                        temp = sum_pos_abs;
+                        sum_rep = nums[i] + nums[y] + nums[k];
+                        
+                        System.out.println("temp" +temp);
+                    }
+                }                     
+                }
+
+            }
+            return sum_rep;
+        }
+
+
+    }
