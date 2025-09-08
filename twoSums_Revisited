@@ -1,0 +1,18 @@
+import java.util.HashMap;
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+      int complement = 0;
+      HashMap<Integer,Integer> twoSums = new HashMap<>();
+        int[] good_nums = new int[2];
+        for(int i =0;i<nums.length;i++)
+        {
+            complement = target-nums[i];
+            if(twoSums.containsKey(complement))
+            {
+                return new int[] {twoSums.get(complement),i};
+            }
+            twoSums.put(nums[i],i);
+}
+return new int[0];
+        }
+    }
