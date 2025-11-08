@@ -1,0 +1,36 @@
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+
+     int left = 1;
+     int right =0;
+
+     for(int p: piles)
+     {
+        right = Math.max(right,p);
+     } 
+    //Input: piles = [1,4,3,2], h = 9  si k = 2
+     while(left<right)
+     {
+        int mid = (left + right)/2;
+        int hours=0;
+
+        for(int bananas: piles)
+        {
+            hours += (bananas + mid - 1) / mid;
+            
+        }
+        if(hours<=h)
+            {
+                right--;
+            }
+            if(hours>=h)
+            {
+                left++;
+            }
+
+     }
+     return left;
+
+        
+    }
+}
