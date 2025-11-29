@@ -1,0 +1,57 @@
+
+class TimeMap {
+
+    private class Data {
+        String value;
+        int timestamp;
+
+        public Data(String value, int timestamp) {
+            this.value = value;
+            this.timestamp = timestamp;
+        }
+    }
+
+    private Map<String, List<Data>> store;
+
+    public TimeMap() {
+        store = new HashMap<>();
+    }
+    
+    public void set(String key, String value, int timestamp) {
+        if (!store.containsKey(key)) {
+            store.put(key, new ArrayList<>());
+        }
+       
+        store.get(key).add(new Data(value, timestamp));
+    }
+    
+    public String get(String key, int timestamp) {
+        if (!store.containsKey(key)) {
+            return "";
+        }
+
+        List<Data> list = store.get(key);
+        
+        return binarySearch(list, timestamp);
+    }
+
+    private String binarySearch(List<Data> list, int targetTime) {
+        int left = 0;
+        int right = list.size() - 1;
+        String result = ""; 
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            int timeAtMid = list.get(mid).timestamp;
+
+            if (timeAtMid <= targetTime) {
+                
+                result = list.get(mid).value;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+        return result;
+    }
+}
