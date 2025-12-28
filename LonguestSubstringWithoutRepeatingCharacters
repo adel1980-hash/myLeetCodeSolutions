@@ -1,0 +1,27 @@
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        HashSet<Character> set_Consecutive = new HashSet<>();
+        int left = 0;
+        int max =0;
+        int temp =0;
+        for(int right = 0; right<s.length(); right++)
+        {
+            char currentChar = s.charAt(right);
+            while(set_Consecutive.contains(currentChar))
+            {
+                set_Consecutive.remove(s.charAt(left));
+                left++;
+            }
+            set_Consecutive.add(currentChar);
+            temp = right-left +1;
+            if(temp>max)
+            {
+            max = temp;
+            }
+
+            
+        }
+        return max;
+
+            }
+}
